@@ -183,16 +183,18 @@ public class Matrix {
         14641
      */
     private static int[][] generateThird() {
-        int[][] arr = new int[5][];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = new int[i + 1];
-            int number = 1;
-            for (int j = 0; j <= i; j++) {
-                arr[i][j] = number;
-                number = number * (i - j) / (j + 1);
+        int[][] matrix = new int[5][];
+        for (int i = 0; i < matrix.length; i++) {
+            matrix[i] = new int[i + 1];
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (j == 0 || j == matrix[i].length - 1) {
+                    matrix[i][j] = 1;
+                } else {
+                    matrix[i][j] = matrix[i - 1][j] + matrix[i - 1][j - 1];
+                }
             }
         }
-        return arr;
+        return matrix;
     }
 
     private static void printMatrix(int[][] matrix) {
